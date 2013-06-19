@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif' rel='stylesheet' type='text/css'>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Juego - Ceibal</title>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="movimientoPeones.js"></script>
+        <script type="text/javascript" src="funciones.js"></script>
+        <script type="text/javascript" src="preguntas.js"></script>
+    </head>
+
+    <body>
+
+        <div class="ranking" id="rank">
+            <div class="cabezalTarjeta">Ranking</div>
+            <table id="tablaRanking">
+                <tr>
+                    
+                </tr>
+            </table>
+
+            <input type="button" id="reiniciarJuego" value="Aceptar">
+        </div>
+
+        <div class="login" id="log">
+            <div class="cabezalTarjeta">login | registro</div>
+            <h2>Nombre jugador 1:</h2>
+            <div class="respuestas clearfix">
+                <input type="text" id="nombreJugador1"/>
+            </div>
+            <h2>Nombre jugador 2:</h2>
+            <div class="respuestas clearfix">
+                <input type="text" id="nombreJugador2"/>
+            </div>
+            <input type="button" id="comenzarJuego" value="Comenzar juego">
+        </div>
+
+        <div class="tarjeta" id="tarj">
+            <div class="cabezalTarjeta" id="tittarj">Tipo de Tarjeta</div>
+            <h2 id="txtpregunta">Pregunta</h2>
+            <div class="respuestas clearfix">
+                <div>
+                    <input type="radio" id="respuesta1" name="respuesta" class="respuesta" value="1"><label for="respuesta1" id="textoRespuesta1">Respuesta 1</label>
+                </div>
+                <div>
+                    <input type="radio" id="respuesta2" name="respuesta" class="respuesta" value="2"><label for="respuesta2" id="textoRespuesta2">Respuesta 2</label>
+                </div>
+                <div>
+                    <input type="radio" id="respuesta3" name="respuesta" class="respuesta" value="3"><label for="respuesta3" id="textoRespuesta3">Respuesta 3</label>
+                </div>
+                <div>
+                    <input type="radio" id="respuesta4" name="respuesta" class="respuesta" value="4"><label for="respuesta4" id="textoRespuesta4">Respuesta 4</label>
+                </div>
+            </div>
+            <input type="button" id="botonRespuesta" value="Verificar Respuesta">
+        </div>
+        <div class="overlay" id ="over">
+            &nbsp;
+        </div>
+        <div class="contenedorInfo">
+            <div class="contenedorInfoInt">
+                <div class="jugador">
+                    <div><img src="img/peon_azul.png"></div>
+                    <div class="nombre" id="jugadorAzul">Jugador Uno</div>
+                </div>
+                <div class="jugador">
+                    <div><img src="img/peon_rojo.png"></div>
+                    <div class="nombre" id="jugadorRojo">Jugador Dos</div>
+                </div>
+                <div id="mensajes" >
+
+                </div>
+            </div>
+        </div>
+        <div class="contenedorTablero">
+            <img id="dado" src="img/6.png" alt="dado" /> 
+            <img class="peon" id="peonRojo" src="img/peon_rojo.png" alt="peon rojo" />
+            <img class="peon" id="peonAzul" src="img/peon_azul.png" alt="peon azul" />
+            <img src="img/tablero.png" alt="tablero" />
+        </div>
+    </body>
+</html>
