@@ -395,13 +395,14 @@ function generarRespuestas() {
 function asignarVictoria() {
     $(".cabezalTarjeta").css("background-color", "rgba(230,119,57,1)");
     dado.onclick = "";
-    alert(jugadorActual );
+
     if (jugadorActual  == "Jugador Azul") {
         jugadores[lugarjugador1]["puntaje"] += 1;
     }
     else {
         jugadores[lugarjugador2]["puntaje"] += 1;
     }
+
     tablaRanking.innerHTML = "<tr></tr>";
     for (var i = 0 in jugadores) {
         tablaRanking.innerHTML += "<tr><td>" + jugadores[i]["nombre"] + "</td><td>" + jugadores[i]["puntaje"] + "</td></tr>";

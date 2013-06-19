@@ -82,36 +82,20 @@ function efectuarAnimacion(_peonAnimar, _casilleroActual, _cantidadCasilleros, _
                 tiempoAnimacion,
                         null);
                 agregarMensaje(jugadorActual + " es el ganador del juego!")
+                asignarVictoria();
+                break;
             }
         }
 
-       
-        if (peonactual == "peonAzul") {
-
-            if (posicionAzul == casilleros.length) {
-                alert("fvtfvt");
-                asignarVictoria();
-            }
-        }
-        else {
-            if (posicionRojo == casilleros.length) {
-                alert("fvtfvt");
-                asignarVictoria();
-            }
-            else
-            {
-                for (var i = -1; i >= _cantidadCasilleros; i--)
-                {
-                    var casilleroFinal = _casilleroActual + i;
-                    $(_peonAnimar).animate({
-                        top: (casilleros[casilleroFinal].topPos + desf) + 'px',
-                        left: (casilleros[casilleroFinal].leftPos + desf) + "px",
-                        width: 107 - (400 - casilleros[casilleroFinal].topPos) * 0.03
-                    },
-                    tiempoAnimacion,
-                            null);
-                }
-            }
+        for (var i = -1; i >= _cantidadCasilleros; i--) {
+            var casilleroFinal = _casilleroActual + i; 
+            $(_peonAnimar).animate({
+                top: (casilleros[casilleroFinal].topPos + desf) + 'px',
+                left: (casilleros[casilleroFinal].leftPos + desf) + "px",
+                width: 107 - (400 - casilleros[casilleroFinal].topPos) * 0.03
+                },
+            tiempoAnimacion,
+            null);
         }
     }
 }
