@@ -106,19 +106,24 @@ function cambiaturno() {
 function hacerPregunta(posicion) {
     var tipopregunta = casilleros[posicion].tipo;
     var preg, respuesta1, respuesta2, respuesta3, respuesta4;
-    var numpreg = Math.floor((Math.random() * preguntas.length + 1));
-    preg = preguntas[numpreg][1];
-    respuesta1 = respuestas[numpreg][2];
-    respuesta2 = respuestas[numpreg][5];
-    respuesta3 = respuestas[numpreg][8];
-    respuesta4 = respuestas[numpreg][11];
-    respcorrecta = preguntas[numpreg][2];
+    var numeroPregunta = Math.floor((Math.random() * preguntas.length + 1));
+    preg = preguntas[numeroPregunta][1];
+    respuesta1 = respuestas[numeroPregunta][2];
+    respuesta2 = respuestas[numeroPregunta][5];
+    respuesta3 = respuestas[numeroPregunta][8];
+    respuesta4 = respuestas[numeroPregunta][11];
+    respcorrecta = preguntas[numeroPregunta][2];
     //$("#txtpregunta").text(preg);
     txtpregunta.innerHTML = preg;
     textoRespuesta1.innerHTML = respuesta1;
     textoRespuesta2.innerHTML = respuesta2;
     textoRespuesta3.innerHTML = respuesta3;
     textoRespuesta4.innerHTML = respuesta4;
+
+    // Borrar pregunta para que no se haga de nuevo
+    preguntas.splice(numeroPregunta, 1)
+    respuestas.splice(numeroPregunta, 1)
+
     var tipo = "";
     document.getElementById("respuesta1").checked = false;
     document.getElementById("respuesta2").checked = false;
