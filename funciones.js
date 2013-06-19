@@ -4,7 +4,7 @@ var numdado,
         posicion,
         posicionRojo,
         posicionAzul,
-        jugadoractual,
+        jugadorActual,
         mensaje,
         peonactual,
         preguntas,
@@ -22,7 +22,7 @@ function iniciar() {
     numdado = 0;
     posicionRojo = 0;
     posicionAzul = 0;
-    jugadoractual = "Jugador Azul";
+    jugadorActual  = "Jugador Azul";
     mensaje = "";
     peonactual = "peonAzul";
     mensajes.innerHTML = "";
@@ -46,7 +46,7 @@ function comenzar() {
         agregarJugadores();
         document.getElementById("nombreJugador1").value = "";
         document.getElementById("nombreJugador2").value = "";
-        document.getElementById("mensajes").innerHTML += jugadoractual + ", tire el dado <br />";
+        agregarMensaje(jugadorActual + " tire el dado");
         document.getElementById("dado").onclick = tirardado;
         document.getElementById("reiniciarJuego").onclick = iniciar;
     }
@@ -77,7 +77,9 @@ function tirardado() {
             dado.src = "img/6.png";
             break;
     }
-    mensajes.innerHTML += jugadoractual + " saco un " + numdado + "<br />";
+
+    agregarMensaje(jugadorActual  + " saco un " + numdado);
+
     if (peonactual == "peonAzul") {
         efectuarAnimacion(peonAzul, posicionAzul, numdado, 1);
         posicionAzul += numdado;
@@ -88,20 +90,25 @@ function tirardado() {
         posicionRojo += numdado;
         posicion = posicionRojo;
     }
+
     hacerPregunta(posicion);
 }
+
+
 function cambiaturno() {
-    if (jugadoractual == "Jugador Azul") {
-        jugadoractual = "Jugador Rojo";
+    var clase;
+    if (jugadorActual  == "Jugador Azul") {
+        jugadorActual  = "Jugador Rojo";
         peonactual = "peonRojo";
-        mensajes.style.color = "red";
+        clase = "textoRojo";
     }
     else {
-        jugadoractual = "Jugador Azul";
+        jugadorActual  = "Jugador Azul";
         peonactual = "peonAzul";
-        mensajes.style.color = "blue";
+        clase = "textoAzul";
     }
-    mensajes.innerHTML += jugadoractual + ", tire el dado <br />";
+
+    agregarMensaje(jugadorActual  + ", tire el dado</p>");
 }
 function hacerPregunta(posicion) {
     var tipopregunta = casilleros[posicion].tipo;
@@ -131,12 +138,12 @@ function hacerPregunta(posicion) {
     document.getElementById("respuesta4").checked = false;
     switch (tipopregunta) {
         case "arroyo":
-            mensajes.innerHTML += jugadoractual + " cayo en un arroyo, cruza al siguiente casillero <br />";
+            agregarMensaje(jugadorActual  + " cayo en un arroyo, cruza al siguiente casillero");
             arroyo();
             break;
         case"pradera":
             tittarj.innerHTML = "Pradera";
-            mensajes.innerHTML += jugadoractual + " cayo en una pradera <br />";
+            agregarMensaje(jugadorActual  + " cayo en una pradera ");
             $(".cabezalTarjeta").css("background-color", "rgba(252,130,69,1)");
             document.getElementById("over").style.display = "block";
             document.getElementById("tarj").style.display = "block";
@@ -144,7 +151,7 @@ function hacerPregunta(posicion) {
             break;
         case "insecto":
             tittarj.innerHTML = "Insecto";
-            mensajes.innerHTML += jugadoractual + " cayo en un insecto <br />";
+            agregarMensaje(jugadorActual  + " cayo en un insecto ");
             $(".cabezalTarjeta").css("background-color", "rgba(170,92,161,1)");
             document.getElementById("over").style.display = "block";
             document.getElementById("tarj").style.display = "block";
@@ -152,7 +159,7 @@ function hacerPregunta(posicion) {
             break;
         case "balsa":
             tittarj.innerHTML = "Balsa";
-            mensajes.innerHTML += jugadoractual + " cayo en una balsa <br />";
+            agregarMensaje(jugadorActual  + " cayo en una balsa ");
             $(".cabezalTarjeta").css("background-color", "rgba(239,201,45,1)");
             document.getElementById("over").style.display = "block";
             document.getElementById("tarj").style.display = "block";
@@ -160,14 +167,14 @@ function hacerPregunta(posicion) {
             break;
         case "trampa":
             tittarj.innerHTML = "Trampa";
-            mensajes.innerHTML += jugadoractual + " cayo en una trampa <br />";
+            agregarMensaje(jugadorActual  + " cayo en una trampa ");
             $(".cabezalTarjeta").css("background-color", "rgba(0,147,38,1)");
             document.getElementById("over").style.display = "block";
             document.getElementById("tarj").style.display = "block";
             document.getElementById("botonRespuesta").onclick = trampa;
             break;
         case "madriguera":
-            mensajes.innerHTML += jugadoractual + " cayo en una madriguera, pierde el turno <br />";
+            agregarMensaje(jugadorActual  + " cayo en una madriguera, pierde el turno ");
             madriguera();
             break;
     }
@@ -196,6 +203,19 @@ function verificaRespuesta() {
             return false;
         }
     }
+
+}
+
+
+function agregarMensaje (mensaje) {
+    if (jugadorActual  == "Jugador Azul") {
+        clase = "textoAzul";
+    } else {
+        clase = "textoRojo";
+    }
+
+    $(mensajes).append("<p class='" + clase + "'>" + mensaje + "</p>")
+    
 
 }
 
@@ -375,8 +395,8 @@ function generarRespuestas() {
 function asignarVictoria() {
     $(".cabezalTarjeta").css("background-color", "rgba(230,119,57,1)");
     dado.onclick = "";
-    alert(jugadoractual);
-    if (jugadoractual == "Jugador Azul") {
+    alert(jugadorActual );
+    if (jugadorActual  == "Jugador Azul") {
         jugadores[lugarjugador1]["puntaje"] += 1;
     }
     else {

@@ -81,7 +81,7 @@ function efectuarAnimacion(_peonAnimar, _casilleroActual, _cantidadCasilleros, _
                 },
                 tiempoAnimacion,
                         null);
-                mensajes.innerHTML += jugadoractual + " es el ganador del juego!!!";
+                agregarMensaje(jugadorActual + " es el ganador del juego!")
             }
         }
 
